@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,12 +32,17 @@ public class CrimeListFragment extends Fragment {
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder {
-        public TextView mTextView;
+        public TextView mTitleView;
+        public TextView mDateView;
+        public CheckBox mCheckBox;
+
 
         public CrimeHolder(View itemView) {
             super(itemView);
 
-            mTextView = (TextView) itemView;
+            mTitleView = (TextView) itemView.findViewById(R.id.list_item_title_view);
+            mDateView = (TextView) itemView.findViewById(R.id.list_item_crime_date);
+            mCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_check_box);
         }
     }
 
@@ -58,7 +64,7 @@ public class CrimeListFragment extends Fragment {
         @Override
         public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+            View view = layoutInflater.inflate(R.layout.list_item_crime, parent, false);
             return new CrimeHolder(view);
         }
 
