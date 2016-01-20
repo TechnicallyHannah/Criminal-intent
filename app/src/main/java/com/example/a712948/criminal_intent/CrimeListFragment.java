@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,13 +32,13 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
-    private class CrimeHolder extends RecyclerView.ViewHolder {
+    private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Crime mCrime;
         public TextView mTitleView;
         public TextView mDateView;
         public CheckBox mCheckBox;
 
-        public void bindCrime(Crime crime){
+        public void bindCrime(Crime crime) {
             mCrime = crime;
             mTitleView.setText(mCrime.getTitle());
             mDateView.setText(mCrime.getDate().toString());
@@ -47,10 +48,15 @@ public class CrimeListFragment extends Fragment {
 
         public CrimeHolder(View itemView) {
             super(itemView);
-
+            itemView.setOnClickListener(this);
             mTitleView = (TextView) itemView.findViewById(R.id.list_item_title_view);
             mDateView = (TextView) itemView.findViewById(R.id.list_item_crime_date);
             mCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_check_box);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(), mCrime.getTitle() + " Clicked!", Toast.LENGTH_SHORT).show();
         }
     }
 
