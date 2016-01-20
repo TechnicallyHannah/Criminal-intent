@@ -32,9 +32,17 @@ public class CrimeListFragment extends Fragment {
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder {
+        private Crime mCrime;
         public TextView mTitleView;
         public TextView mDateView;
         public CheckBox mCheckBox;
+
+        public void bindCrime(Crime crime){
+            mCrime = crime;
+            mTitleView.setText(mCrime.getTitle());
+            mDateView.setText(mCrime.getDate().toString());
+            mCheckBox.setChecked(mCrime.isSolved());
+        }
 
 
         public CrimeHolder(View itemView) {
@@ -71,7 +79,7 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onBindViewHolder(CrimeHolder holder, int position) {
             Crime crime = mCrimes.get(position);
-            holder.mTextView.setText(crime.getTitle());
+            holder.bindCrime(crime);
         }
 
         @Override
