@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -67,7 +66,6 @@ public class CrimeListFragment extends Fragment {
             //   Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
             Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
-            Toast.makeText(getActivity(), mPosition + " ", Toast.LENGTH_SHORT).show();
         }
     }
 
