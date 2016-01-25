@@ -2,6 +2,7 @@ package com.example.a712948.criminal_intent;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import java.util.UUID;
 public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
+    private static final String DIALOG_DATE = "DialogDate";
+
     private Crime mCrime;
     private EditText mCrimeTitle;
     private Button mDateButton;
@@ -49,7 +52,16 @@ public class CrimeFragment extends Fragment {
         mSolvedBox = (CheckBox) v.findViewById(R.id.crime_solved);
 
         mDateButton.setText(mCrime.getDate());
-        mDateButton.setEnabled(false);
+       // mDateButton.setEnabled(false);
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  FragmentManager manager = getFragmentManager();
+                FragmentManager manager = getFragmentManager();
+                DatePickerFragment dialog = new DatePickerFragment();
+                dialog.show(manager,DIALOG_DATE);
+            }
+        });
 
         mSolvedBox.setChecked(mCrime.isSolved());
         mSolvedBox.setOnClickListener(new View.OnClickListener() {
