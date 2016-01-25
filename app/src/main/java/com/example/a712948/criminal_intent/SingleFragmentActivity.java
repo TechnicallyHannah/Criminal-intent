@@ -10,14 +10,17 @@ import android.support.v4.app.FragmentManager;
  * @since 12/29/15.
  */
 public abstract class SingleFragmentActivity extends FragmentActivity {
+    protected abstract Fragment createFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fragment);
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.container);
         if (fragment == null) {
-            fragment = new CrimeFragment();
+            fragment = createFragment();
             fm.beginTransaction().add(R.id.container, fragment).commit();
         }
     }
