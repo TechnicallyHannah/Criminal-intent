@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
 public class CrimeListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private CrimeAdapter mAdapter;
+    private int mPosition;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +53,6 @@ public class CrimeListFragment extends Fragment {
             mCheckBox.setChecked(mCrime.isSolved());
         }
 
-
         public CrimeHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -63,8 +64,10 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             // Intent intent = new Intent(getActivity(),CrimeActivity.class);
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            //   Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
+            Toast.makeText(getActivity(), mPosition + " ", Toast.LENGTH_SHORT).show();
         }
     }
 
