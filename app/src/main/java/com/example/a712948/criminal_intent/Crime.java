@@ -1,6 +1,5 @@
 package com.example.a712948.criminal_intent;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,7 +12,7 @@ public class Crime {
     private UUID mId;
     private String mTitle;
     private Date mDateFormat = new Date();
-    private String mDate;
+    private Date mDate;
     private boolean mSolved;
 
     public Crime() {
@@ -40,14 +39,12 @@ public class Crime {
         mSolved = solved;
     }
 
-    public String getDate() {
-        SimpleDateFormat newDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        newDateFormat.applyPattern("EEEE , d MMM , yyyy");
-        mDate = newDateFormat.format(mDateFormat);
+    public Date getDate() {
+        mDate = new Date();
         return mDate;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         mDate = date;
 
     }
