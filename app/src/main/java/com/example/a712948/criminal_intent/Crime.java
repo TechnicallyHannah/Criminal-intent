@@ -40,7 +40,9 @@ public class Crime {
     }
 
     public Date getDate() {
-        mDate = new Date();
+        if (mDate == null) {
+            mDate = new Date();
+        }
         return mDate;
     }
 
