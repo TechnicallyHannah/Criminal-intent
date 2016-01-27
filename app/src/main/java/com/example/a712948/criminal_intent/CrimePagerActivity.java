@@ -17,6 +17,7 @@ import java.util.UUID;
  * @since 1/25/16.
  */
 public class CrimePagerActivity extends AppCompatActivity {
+
     private static final String ARG_CRIME_ID = "crime_id";
     private ViewPager mViewPager;
     private List<Crime> mCrimes;
@@ -24,7 +25,6 @@ public class CrimePagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle onSavedInstance) {
         super.onCreate(onSavedInstance);
-        setTitle("Title");
         setContentView(R.layout.activity_crime_pager);
 
         mViewPager = (ViewPager) findViewById(R.id.activity_crime_pager_view_pager);
