@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +15,7 @@ import java.util.UUID;
  * @author Hannah Paulson
  * @since 1/25/16.
  */
-public class CrimePagerActivity extends FragmentActivity {
+public class CrimePagerActivity extends AppCompatActivity {
     private static final String ARG_CRIME_ID = "crime_id";
     private ViewPager mViewPager;
     private List<Crime> mCrimes;
