@@ -43,9 +43,7 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //  mCrime = new Crime();
-        //  UUID crimeID = (UUID) getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
-        UUID crimeID = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
+         UUID crimeID = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.getCrimeLab(getActivity()).getCrime(crimeID);
     }
 
@@ -56,13 +54,10 @@ public class CrimeFragment extends Fragment {
         mSolvedBox = (CheckBox) v.findViewById(R.id.crime_solved);
 
         updateDate();
-        // mDateButton.setEnabled(false);
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  FragmentManager manager = getFragmentManager();
                 FragmentManager manager = getFragmentManager();
-                //  DatePickerFragment dialog = new DatePickerFragment();
                 DatePickerFragment dialog = DatePickerFragment.newInstance(mCrime.getDate());
                 dialog.show(manager, DIALOG_DATE);
                 dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);

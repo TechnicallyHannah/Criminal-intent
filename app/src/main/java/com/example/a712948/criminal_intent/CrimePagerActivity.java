@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -23,13 +24,14 @@ public class CrimePagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle onSavedInstance) {
         super.onCreate(onSavedInstance);
+        setTitle("Title");
         setContentView(R.layout.activity_crime_pager);
 
         mViewPager = (ViewPager) findViewById(R.id.activity_crime_pager_view_pager);
         mCrimes = CrimeLab.getCrimeLab(this).getCrimes();
         UUID crimeID = (UUID) getIntent().getSerializableExtra(ARG_CRIME_ID);
 
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentPagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
@@ -42,8 +44,8 @@ public class CrimePagerActivity extends AppCompatActivity {
                 return mCrimes.size();
             }
         });
-        for(int i=0; i<mCrimes.size(); i++){
-            if(mCrimes.get(i).getId().equals(crimeID)){
+        for (int i = 0; i < mCrimes.size(); i++) {
+            if (mCrimes.get(i).getId().equals(crimeID)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }
